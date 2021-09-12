@@ -1,7 +1,17 @@
 # SIFT
 Feature Matching-SIFT
 
-This code is for SIFT. Put your two images in the correct folder, and then choose the options.
+This code is for SIFT. Put your two images in the correct folder, and then choose the options. 
+Keypoints between two images are matched by NNM(Nearest Neighbor Matching). With 
+given descriptor fi for image1 and descriptor gj for image2, minimum distance between 
+points is chosen as k and it is smaller than certain threshold T. But the problem is caused 
+when the distinction of distances doesn’t seem that clear. For example, any kind of noise 
+can disturb the feature matching and also, in case 1, d11=1.2, d12=1.23, d13=5 and in case 
+2, d11=1.2, d12=5.2, d13=7.1. It is obvious that what we call as ‘feature’ would stick out in 
+case of case 2. Therefore ratio based threshold method is used. Suppose that there is 
+minimum distance as k1 second minimum distance as k2 and given ratio threshold as t. 
+Only points that k1/k2 <= t would be survived. The other way to filter unreliable points is 
+cross-checking. Only points that in image1->image2 and image2->image1
 
 Case 1 is that performs the feature matching using NN without ratio based threshold T. It includes all the 
 unreliable matching points so that the result is not that good. Set the both variables crossCheck and 
